@@ -69,12 +69,21 @@ exports.findOne = (req, res) => {
     const categoryId = req.params.id;
 
     Category.findByPk(categoryId).then(category => {
+        if (category == null) {
+            res.status(500).send({
+                message: "Internal error while fetching the category by id."
+            });
+            return;
+        }
         res.status(200).send(category);
-    }).catch(err => {
-        res.status(500).send({
-            message: "Internal error while fetching the category by id."
-        })
-    })
+    });
+   
+    // This catch block won't work.
+    // .catch(err => {
+    //     res.status(500).send({
+    //         message: "Internal error while fetching the category by id."
+    //     })
+    // })
 }
 
 // Update an existing category
