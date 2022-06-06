@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.post("/ecomm/api/v1/categories", categoryController.create);
 
     // Route for the GET request to fetch all the categories
-    app.post("/ecomm/api/v1/categories", categoryController.findAll);
+    app.get("/ecomm/api/v1/categories", categoryController.findAll);
 
     // Route for the GET request to fetch a category based on the id
     app.get("/ecomm/api/v1/categories/:id", categoryController.findOne);
