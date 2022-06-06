@@ -23,6 +23,6 @@ const sequelize = new Sequelize(
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.category = require("./category.model");
+db.category = require("./category.model.js")(sequelize, Sequelize);
 
 module.exports = db;
