@@ -37,5 +37,6 @@ function init() {
 
 // Importing the routes and using them
 require("./routes/category.routes")(app);
+require("./routes/product.routes")(app);
 
 app.listen(serverConfig.PORT, () => console.log(`App running on : ${serverConfig.PORT}`))
