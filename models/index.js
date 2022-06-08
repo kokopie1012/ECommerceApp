@@ -4,6 +4,7 @@
 * 2. Export all the functionalities of the model through this file.
 * 3. One of the advantages of using an index.js file is that other files 
 *   trying to import this file only need to provide the module name.
+*   For example : require(./models); // No need to specify the file name index.js
 */ 
 
 const config = require("../configs/db.configs");
@@ -24,5 +25,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.category = require("./category.model.js")(sequelize, Sequelize);
+db.product = require("./product.model.js")(sequelize, Sequelize);
 
 module.exports = db;
