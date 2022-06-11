@@ -12,14 +12,6 @@ const Category = db.category;
 
 // Create and save a new category
 exports.create = (req, res) => {
-    
-    // Validation of the request body
-    if (!req.body.name) {
-        res.status(400).send({
-            message: "Name of the category can't be empty!"
-        })
-        return;
-    }
 
     // Creation of the category object to be stored in the db
     const category = {
@@ -85,14 +77,6 @@ exports.findOne = (req, res) => {
 
 // Update an existing category
 exports.update = (req, res) => {
-
-    // Validation of the request body
-    if (!req.body.name) {
-        res.status(400).send({
-            message: "Name of the category can't be empty!"
-        })
-        return;
-    }
 
     // Creating the category object to be stored in the DB
     const category = {

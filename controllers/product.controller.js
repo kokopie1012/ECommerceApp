@@ -7,19 +7,13 @@ const Product = db.product;
 
 // Create and save a new product
 exports.create = (req, res) => {
-    // Validating the request data
-    if (!req.body.name) {
-        res.status(400).send({
-            message: "Name of the product can't be empty!"
-        })
-        return;
-    };
 
     // Create the product object to be stored in the db
     const product = {
         name: req.body.name,
         description: req.body.description,
-        cost: req.body.cost
+        cost: req.body.cost,
+        categoryId: req.body.categoryId
     }
 
     Product.create(product).then(product => {
@@ -74,20 +68,6 @@ exports.findOne = (req, res) => {
 
 // Update an existing product
 exports.update = (req, res) => {
-    // Validation of the request
-    if (!req.body.name) {
-        res.status(400).send({
-            message: "Name of the product can't be empty."
-        })
-        return;
-    }
-
-    if (!req.body.cost) {
-        res.status(400).send({
-            message: "Cost of the product can't be empty."
-        })
-        return;
-    }
 
     // Create the product to be added to the db
     const product = {
