@@ -48,7 +48,34 @@ const validateProductRequest = (req, res, next) => {
     }
 }
 
+const validateCategoryPassedInReqParams =(req, res) => {
+    const categoryId = req.params.categoryId;
+
+    if (categoryId) {
+        Category.findByPk(categoryId).then(category => {
+            if (!category) {
+                res.status(400).send({
+                    message: "Category id passed is not available."
+                })
+            }
+            next();
+        }).catch(err => {
+            res.status(500).send({
+                message:"Internal server error while fetching category by id."
+            })
+            return;
+        })
+    } else {
+        res.status(400).send({
+            message: "Category id passed is not available."
+        })
+        return;
+    }
+
+}
+
 module.exports = {
     validateCategoryRequest: validateCategoryRequest,
-    validateProductRequest: validateProductRequest
+    validateProductRequest: validateProductRequest,
+    validateCategoryPassedInReqParams: validateCategoryPassedInReqParams
 }

@@ -16,4 +16,7 @@ module.exports = (app) => {
 
     // Route for the delete request to delete a product by id
     app.delete("/ecomm/api/v1/products/:id", productController.delete);
+
+    // Route to GET all the products under a category
+    app.get("/ecomm/api/v1/categories/:categoryId/products", [requestValidator.validateCategoryPassedInReqParams],productController.getProductsUnderCategory);
 }

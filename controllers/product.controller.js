@@ -135,3 +135,18 @@ exports.delete = (req, res) => {
         })
     })
 }
+
+// GET all the products under a category
+exports.getProductsUnderCategory = (req, res) => {
+    const categoryId = parseInt(req.params.categoryId);
+    
+    Product.findAll({where: {
+        categoryId: categoryId
+    }}).then(products => {
+        res.status(200).send(products);
+    }).catch(err => {
+        res.status(500).send({
+            message: "Internal server error while fetching all the products under the category."
+        })
+    })
+}
