@@ -1,5 +1,6 @@
 const requestValidator = require("./requestValidator");
-
+const authJwt = require("./verifyJWT");
 module.exports = {
-    requestValidator
+    requestValidator,
+    authJwt
 }
