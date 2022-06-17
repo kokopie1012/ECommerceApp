@@ -1,6 +1,8 @@
 const productController = require("../controllers/product.controller");
 const {requestValidator, authJwt} = require("../middlewares");
 
+// In the routes, always check the token first and then verfy if admin or not
+
 module.exports = (app) => {
     // Route for POST request to create the product
     app.post("/ecomm/api/v1/products", [requestValidator.validateProductRequest, authJwt.verifyToken, authJwt.isAdmin],productController.create);
